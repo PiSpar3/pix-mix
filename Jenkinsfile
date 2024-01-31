@@ -9,7 +9,6 @@ pipeline{
             }
         }
     }
-    stages{
         stage("This is the build stage"){
             steps{
                 sh """
