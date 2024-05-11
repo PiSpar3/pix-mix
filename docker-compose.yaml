@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+  pix-mix:
+    image: pix-mix:1
+    restart: always
+    container_name: pixmix-done
+    depends_on:
+      - mysql
+    ports:
+      - 74:80
+
+  mysql:
+    image: mysql:5.7  
+    restart: always
+    container_name: mysql-done
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_USERNAME: admin
+      MYSQL_ROOT_PASSWORD: password 
+      MYSQL_DATABASE: pix-mix
+
+  phpmyadmin: 
+    image: phpmyadmin
+    restart: always
+    container_name: phpmyadmin-done
+    ports:
+      - 8083:80
+    environment:
+      PMA_USER: admin
+      PMA_PASSWORD: password
+      PMA_ARBITRARY: 1
